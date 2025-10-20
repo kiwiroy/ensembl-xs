@@ -18,3 +18,11 @@ pod2htm*.tmp
 pm_to_blib
 Bio-EnsEMBL-XS-*
 Bio-EnsEMBL-XS-*.tar.gz
+Bio-EnsEMBL.c
+XS.bs
+*.a
+*.bak
+*.o
+*.xsc
+cpanfile.snapshot
+/local/
