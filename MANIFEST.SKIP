@@ -15,9 +15,12 @@ cpanfile.*
 .*\.xsc$
 
 ^Bio-EnsEMBL\.c$
+^Bio-EnsEMBL-XS-
 
 Makefile$
 Makefile\.old$
 ^MANIFEST\.SKIP
 ^pm_to_blib
 ^XS\.bs$
+^justfile$
+^\.ensembl-test$

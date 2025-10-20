@@ -26,3 +26,4 @@ XS.bs
 *.xsc
 cpanfile.snapshot
 /local/
+/.ensembl-test/
