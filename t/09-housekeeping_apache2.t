@@ -15,8 +15,6 @@
 
 use strict;
 use warnings;
-
-
 use Cwd;
 use File::Spec;
 use File::Basename qw/dirname/;
@@ -27,7 +25,13 @@ if ( not $ENV{TEST_AUTHOR} ) {
 }
 
 require Test::Warnings;
+Test::Warnings->import(':all');
 require Bio::EnsEMBL::Test::TestUtils;
+Bio::EnsEMBL::Test::TestUtils->import(qw(
+  all_source_code
+  is_notice_file_good
+  has_apache2_licence
+));
 
 #chdir into the file's target & request cwd() which should be fully resolved now.
 #then go back
@@ -52,6 +56,8 @@ foreach my $f (@source_files) {
     next if $f =~ /\/ppport\.h$/;
     next if $f =~ /\/CLEAN\b/;
     next if $f =~ /\.(tmpl|hash|nw|ctl|txt|html|textile|md)$/;
+    next if $f =~ m{\blocal/lib/perl5\b};
+    next if $f =~ m{\blocal/bin\b};
     has_apache2_licence($f, $skip_copyright);
 }
 
