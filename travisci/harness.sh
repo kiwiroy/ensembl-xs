@@ -7,9 +7,9 @@ export TEST_AUTHOR=$USER
 
 echo "Running test suite"
 if [ "$COVERALLS" = 'true' ]; then
-  PERL5OPT='-MDevel::Cover=+ignore,bioperl,+ignore,ensembl' make test
+  PERL5OPT='-MDevel::Cover=+ignore,bioperl,+ignore,ensembl' make test TEST_FILES="t/*.t xt/*.t"
 else
-  make test
+  make test TEST_FILES="t/*.t xt/*.t"
 fi
 
 rt=$?
