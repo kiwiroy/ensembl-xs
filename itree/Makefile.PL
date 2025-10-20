@@ -22,7 +22,7 @@ use ExtUtils::MakeMaker;
 $Verbose = 1;
 WriteMakefile(
 	      NAME   => 'Tree::Interval::Fast::itree',
-	      SKIP   => [qw(all static static_lib dynamic dynamic_lib)],
+	      SKIP   => [qw(all static dynamic)],
 	      clean  => {'FILES' => 'libitree$(LIB_EXT)'},
 	     );
 

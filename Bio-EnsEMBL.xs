@@ -14,6 +14,10 @@
   See the License for the specific language governing permissions and
   limitations under the License.
 */
+/* From: https://blogs.perl.org/users/tom_wyant/2022/03/xs-versus-clang-infinite-warnings.html */
+#if defined(__clang__) && defined(__clang_major__) && __clang_major__ > 11
+#pragma clang diagnostic ignored "-Wcompound-token-split-by-macro"
+#endif
 
 #ifdef __cplusplus
 extern "C" {
@@ -23,7 +27,7 @@ extern "C" {
 
 #ifdef ENABLE_DEBUG
 #define TRACEME(x) do { \
-	if (SvTRUE(perl_get_sv("Bio::EnsEMBL::XS::ENABLE_DEBUG", TRUE))) \
+	if (SvTRUE(get_sv("Bio::EnsEMBL::XS::ENABLE_DEBUG", TRUE))) \
 	  { PerlIO_stdoutf (x); PerlIO_stdoutf ("\n"); }	    \
 } while (0)
 #else
@@ -32,11 +36,8 @@ extern "C" {
 
 #include "EXTERN.h"
 #include "perl.h"
-#define NEED_sv_2pv_flags
-#define NEED_newRV_noinc
 #include "XSUB.h"
-#include "ppport.h"
-  
+
 #include "interval.h"
 #include "interval_list.h"
 #include "interval_tree.h"
@@ -678,7 +679,7 @@ search( tree, low, high )
       av_push( av_ref, ref );
     }
 
-    RETVAL = newRV( (SV*) av_ref );
+    RETVAL = newRV_inc( (SV*) av_ref );
     ilist_delete ( results );
 
   OUTPUT:
