@@ -23,7 +23,8 @@ use File::Temp qw/ tempfile /;
 use FindBin '$Bin';
 
 use lib "$Bin/../lib", "$Bin/../blib/lib", "$Bin/../blib/arch";
-use Bio::EnsEMBL::Utils::Scalar;
+eval {require Bio::EnsEMBL::Utils::Scalar; 1; }
+    or plan skip_all => 'Bio::EnsEMBL::Utils::Scalar not installed';
 
 use_ok('Bio::EnsEMBL::XS');
 

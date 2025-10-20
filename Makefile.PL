@@ -26,7 +26,7 @@ WriteMakefile(
 	      NAME             => 'Bio::EnsEMBL::XS',
 	      AUTHOR           => q{Alessandro Vullo <avullo@ebi.ac.uk>},
 	      VERSION_FROM     => 'lib/Bio/EnsEMBL/XS.pm',
-	      # ABSTRACT_FROM    => 'lib/Bio/EnsEMBL/XS.pm',
+	      ABSTRACT_FROM    => 'lib/Bio/EnsEMBL/XS.pm',
 	      # LICENSE          => 'Artistic_2_0',
 	      PL_FILES         => {},
 	      MIN_PERL_VERSION => 5.8.9,
